@@ -1,0 +1,44 @@
+{
+  "id": "linkedin-auto-connect",
+  "name": "LinkedIn Smart Connect",
+  "description": "Auto-send personalized connection requests from LinkedIn search results with customizable message templates",
+  "version": 1,
+  "categories": ["Social", "Automation"],
+  "parameters": [
+    {
+      "name": "message",
+      "type": "string",
+      "description": "Connection request message template",
+      "required": true
+    },
+    {
+      "name": "dailyLimit",
+      "type": "number",
+      "description": "Maximum requests per day",
+      "required": false,
+      "default": 20
+    }
+  ],
+  "triggerPhrases": ["linkedin", "connect", "connection", "request", "network"],
+  "urlPattern": "linkedin.com",
+  "preconditions": [
+    {
+      "type": "url_contains",
+      "value": "linkedin.com",
+      "description": "Must be on LinkedIn"
+    }
+  ],
+  "author": "networking-pro",
+  "createdAt": 1709510400000,
+  "updatedAt": 1709510400000,
+  "skillMd": "---\nname: linkedin-auto-connect\ndescription: Auto-send personalized connection requests from LinkedIn search results with customizable message templates. Use when the user wants to bulk-send LinkedIn connection requests.\n---\n\n# LinkedIn Smart Connect\n\nAutomatically sends personalized connection requests from LinkedIn people search results.\n\n## Features\n\n- Iterates through search results\n- Generates personalized messages from a template\n- Supports daily send limit\n\n## Parameters\n\n- **message** (string, required): Connection request message template\n- **dailyLimit** (number, optional, default: 20): Maximum requests per day\n\n## Guidelines\n\n- Always respect the daily send limit to avoid LinkedIn rate limits\n- Personalize each message using the target person's name and headline\n- Skip profiles that already have a pending or accepted connection\n- Pause between requests to avoid detection",
+  "steps": [],
+  "startUrl": "https://www.linkedin.com/search/results/people/",
+  "score": 0.5,
+  "status": "active",
+  "totalRuns": 0,
+  "successCount": 0,
+  "source": "user",
+  "instruction": "",
+  "configSignature": ""
+}

@@ -1,0 +1,39 @@
+{
+  "id": "github-pr-review",
+  "name": "GitHub PR Review Helper",
+  "description": "Automatically summarize PR changes and leave structured review comments on GitHub pull requests",
+  "version": 3,
+  "categories": ["Developer Tools", "GitHub"],
+  "parameters": [
+    {
+      "name": "style",
+      "type": "select",
+      "description": "Review style",
+      "required": false,
+      "default": "concise",
+      "options": ["concise", "detailed"]
+    }
+  ],
+  "triggerPhrases": ["github", "pull request", "review", "PR", "code review"],
+  "urlPattern": "github.com",
+  "preconditions": [
+    {
+      "type": "url_contains",
+      "value": "github.com",
+      "description": "Must be on GitHub"
+    }
+  ],
+  "author": "ocbot-community",
+  "createdAt": 1708819200000,
+  "updatedAt": 1710115200000,
+  "skillMd": "---\nname: github-pr-review\ndescription: Automatically summarize PR changes and leave structured review comments on GitHub pull requests. Use when reviewing code on GitHub.\n---\n\n# GitHub PR Review Helper\n\nReads the diff of a GitHub pull request, summarizes the changes, and posts a structured review comment.\n\n## Features\n\n- Summarizes added/removed/modified files\n- Highlights potential issues\n- Posts review comment with suggestions\n\n## Parameters\n\n- **style** (select, optional, default: \"concise\"): Review style. Options: concise, detailed\n\n## Guidelines\n\n- Read the full diff before generating a summary\n- Group changes by file or module for clarity\n- Flag potential bugs, security issues, and style violations\n- Keep concise reviews under 200 words; detailed reviews can be longer\n- Use GitHub's suggestion syntax for concrete code changes",
+  "steps": [],
+  "startUrl": "https://github.com",
+  "score": 0.5,
+  "status": "active",
+  "totalRuns": 0,
+  "successCount": 0,
+  "source": "user",
+  "instruction": "",
+  "configSignature": ""
+}
