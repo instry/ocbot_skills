@@ -1,0 +1,15 @@
+{
+  "id": "linkedin-auto-connect",
+  "skill_id": "linkedin-auto-connect",
+  "author_id": "community",
+  "author_name": "networking-pro",
+  "name": "LinkedIn Smart Connect",
+  "description": "Auto-send personalized connection requests from LinkedIn search results with customizable message templates",
+  "categories": "[\"Social\", \"Automation\"]",
+  "data": "{\"name\":\"LinkedIn Smart Connect\",\"description\":\"Auto-send personalized connection requests from LinkedIn search results\",\"startUrl\":\"https://www.linkedin.com/search/results/people/\",\"skillMd\":\"# LinkedIn Smart Connect\\n\\nAutomatically sends personalized connection requests from LinkedIn people search results.\\n\\n## Features\\n- Iterates through search results\\n- Generates personalized messages from a template\\n- Supports daily send limit\",\"parameters\":[{\"name\":\"message\",\"type\":\"string\",\"description\":\"Connection request message template\",\"required\":true},{\"name\":\"dailyLimit\",\"type\":\"number\",\"description\":\"Maximum requests per day\",\"required\":false,\"default\":20}]}",
+  "url_pattern": "https://www.linkedin.com",
+  "clone_count": 189,
+  "version": 1,
+  "created_at": 1709510400000,
+  "updated_at": 1709510400000
+}

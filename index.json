@@ -1,0 +1,47 @@
+[
+  {
+    "id": "amazon-order-export",
+    "skill_id": "amazon-order-export",
+    "author_id": "community",
+    "author_name": "ocbot-community",
+    "name": "Amazon Order Export",
+    "description": "Automatically export your Amazon order history to a spreadsheet, with date range filtering",
+    "categories": "[\"Shopping\", \"Data Export\"]",
+    "data": "",
+    "url_pattern": "https://www.amazon.com",
+    "clone_count": 214,
+    "version": 2,
+    "created_at": 1709424000000,
+    "updated_at": 1710028800000
+  },
+  {
+    "id": "github-pr-review",
+    "skill_id": "github-pr-review",
+    "author_id": "community",
+    "author_name": "ocbot-community",
+    "name": "GitHub PR Review Helper",
+    "description": "Automatically summarize PR changes and leave structured review comments on GitHub pull requests",
+    "categories": "[\"Developer Tools\", \"GitHub\"]",
+    "data": "",
+    "url_pattern": "https://github.com",
+    "clone_count": 356,
+    "version": 3,
+    "created_at": 1708819200000,
+    "updated_at": 1710115200000
+  },
+  {
+    "id": "linkedin-auto-connect",
+    "skill_id": "linkedin-auto-connect",
+    "author_id": "community",
+    "author_name": "networking-pro",
+    "name": "LinkedIn Smart Connect",
+    "description": "Auto-send personalized connection requests from LinkedIn search results with customizable message templates",
+    "categories": "[\"Social\", \"Automation\"]",
+    "data": "",
+    "url_pattern": "https://www.linkedin.com",
+    "clone_count": 189,
+    "version": 1,
+    "created_at": 1709510400000,
+    "updated_at": 1709510400000
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "amazon-order-export",
+  "skill_id": "amazon-order-export",
+  "author_id": "community",
+  "author_name": "ocbot-community",
+  "name": "Amazon Order Export",
+  "description": "Automatically export your Amazon order history to a spreadsheet, with date range filtering",
+  "categories": "[\"Shopping\", \"Data Export\"]",
+  "data": "{\"name\":\"Amazon Order Export\",\"description\":\"Automatically export your Amazon order history to a spreadsheet\",\"startUrl\":\"https://www.amazon.com/gp/css/order-history\",\"skillMd\":\"# Amazon Order Export\\n\\nScrapes your Amazon order history page, extracts order details (item name, price, date, status), and exports them as a downloadable spreadsheet.\\n\\n## How to use\\n1. Navigate to your Amazon order history\\n2. Run this skill\\n3. Wait for automatic pagination\\n4. Download the generated spreadsheet\",\"parameters\":[{\"name\":\"pages\",\"type\":\"number\",\"description\":\"Number of pages to export\",\"required\":false,\"default\":5},{\"name\":\"year\",\"type\":\"select\",\"description\":\"Order year to export\",\"required\":false,\"default\":\"2025\",\"options\":[\"2025\",\"2024\",\"2023\"]}]}",
+  "url_pattern": "https://www.amazon.com",
+  "clone_count": 214,
+  "version": 2,
+  "created_at": 1709424000000,
+  "updated_at": 1710028800000
+}
