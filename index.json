@@ -2,28 +2,28 @@
   {
     "id": "amazon-order-export",
     "name": "Amazon Order Export",
-    "description": "Automatically export your Amazon order history to a spreadsheet, with date range filtering",
+    "description": "Exports your Amazon order history to a downloadable spreadsheet for record keeping, expense tracking, or returns management.",
     "author": "ocbot-community",
-    "categories": ["Shopping", "Data Export"],
-    "url_pattern": "https://www.amazon.com",
+    "categories": ["e-commerce", "data-export"],
+    "url_pattern": "amazon.com",
     "version": 2
   },
   {
     "id": "github-pr-review",
     "name": "GitHub PR Review Helper",
-    "description": "Automatically summarize PR changes and leave structured review comments on GitHub pull requests",
+    "description": "Summarizes pull request changes and posts a structured review comment on GitHub with file-level diffs and issue flagging.",
     "author": "ocbot-community",
-    "categories": ["Developer Tools", "GitHub"],
-    "url_pattern": "https://github.com",
+    "categories": ["developer-tools", "github"],
+    "url_pattern": "github.com",
     "version": 3
   },
   {
     "id": "linkedin-auto-connect",
     "name": "LinkedIn Smart Connect",
-    "description": "Auto-send personalized connection requests from LinkedIn search results with customizable message templates",
+    "description": "Sends personalized connection requests from LinkedIn people search results with customizable message templates and rate limiting.",
     "author": "networking-pro",
-    "categories": ["Social", "Automation"],
-    "url_pattern": "https://www.linkedin.com",
+    "categories": ["social", "automation"],
+    "url_pattern": "linkedin.com",
     "version": 1
   }
 ]

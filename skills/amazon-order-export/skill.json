@@ -1,39 +1,39 @@
 {
   "id": "amazon-order-export",
   "name": "Amazon Order Export",
-  "description": "Automatically export your Amazon order history to a spreadsheet, with date range filtering",
+  "description": "Exports your Amazon order history to a downloadable spreadsheet. Use this when the user wants to extract order data including item names, prices, dates, and delivery status for record keeping, expense tracking, or returns management.",
   "version": 2,
-  "categories": ["Shopping", "Data Export"],
+  "categories": ["e-commerce", "data-export"],
   "parameters": [
-    {
-      "name": "pages",
-      "type": "number",
-      "description": "Number of pages to export",
-      "required": false,
-      "default": 5
-    },
     {
       "name": "year",
       "type": "select",
-      "description": "Order year to export",
+      "description": "Order year to export, selecting from the year dropdown on the order history page",
       "required": false,
       "default": "2025",
       "options": ["2025", "2024", "2023"]
+    },
+    {
+      "name": "max_pages",
+      "type": "number",
+      "description": "Maximum number of order history pages to scrape before stopping (each page contains ~10 orders)",
+      "required": false,
+      "default": 5
     }
   ],
-  "triggerPhrases": ["amazon", "order", "export", "history", "spreadsheet"],
+  "triggerPhrases": ["export amazon orders", "download amazon order history", "amazon订单导出", "导出亚马逊订单", "amazon order spreadsheet"],
   "urlPattern": "amazon.com",
   "preconditions": [
     {
       "type": "url_contains",
       "value": "amazon.com",
-      "description": "Must be on Amazon"
+      "description": "Browser must be on Amazon domain with active login session"
     }
   ],
   "author": "ocbot-community",
   "createdAt": 1709424000000,
   "updatedAt": 1710028800000,
-  "skillMd": "---\nname: amazon-order-export\ndescription: Automatically export your Amazon order history to a spreadsheet, with date range filtering. Use when the user wants to scrape or download their Amazon orders.\n---\n\n# Amazon Order Export\n\nScrapes your Amazon order history page, extracts order details (item name, price, date, status), and exports them as a downloadable spreadsheet.\n\n## How to Use\n\n1. Navigate to your Amazon order history\n2. Run this skill\n3. Wait for automatic pagination\n4. Download the generated spreadsheet\n\n## Parameters\n\n- **pages** (number, optional, default: 5): Number of pages to export\n- **year** (select, optional, default: \"2025\"): Order year to export. Options: 2025, 2024, 2023\n\n## Guidelines\n\n- Respects pagination — waits for each page to load before scraping\n- Extracts: item name, price, order date, delivery status, order ID\n- Outputs a clean spreadsheet with one row per item\n- Handles multi-item orders by expanding each item into its own row",
+  "skillMd": "---\nname: amazon-order-export\ndescription: Exports your Amazon order history to a downloadable spreadsheet. Use this when the user wants to extract order data including item names, prices, dates, and delivery status for record keeping, expense tracking, or returns management.\ntriggerPhrases:\n  - export amazon orders\n  - download amazon order history\n  - amazon订单导出\n  - 导出亚马逊订单\n  - amazon order spreadsheet\nstartUrl: \"https://www.amazon.com/gp/css/order-history\"\nurlPattern: \"amazon.com\"\ncategories:\n  - e-commerce\n  - data-export\nparameters:\n  - name: year\n    type: select\n    description: \"Order year to export, selecting from the year dropdown on the order history page\"\n    required: false\n    default: \"2025\"\n    options: [\"2025\", \"2024\", \"2023\"]\n  - name: max_pages\n    type: number\n    description: \"Maximum number of order history pages to scrape before stopping (each page contains ~10 orders)\"\n    required: false\n    default: 5\npreconditions:\n  - type: url_contains\n    value: \"amazon.com\"\n    description: \"Browser must be on Amazon domain with active login session\"\n---\n\n# Amazon Order Export\n\n## Workflow\n1. Navigate to https://www.amazon.com/gp/css/order-history (Amazon \"Your Orders\" page).\n2. Select the target year from the \"Orders placed in\" dropdown if {{year}} differs from the current selection.\n3. For each order on the page, extract: order date, order ID, item name, item price, delivery status.\n4. If more pages exist and current page count < {{max_pages}}, click the \"Next\" pagination button and repeat step 3.\n5. Compile all extracted data into a CSV table and trigger a browser download.\n\n## Preconditions\n- User must be logged into their Amazon account (active session).\n- Browser must be on the Amazon domain (amazon.com) to ensure session cookies are available.\n\n## Success Criteria\n- A CSV file is downloaded containing columns: Order Date, Order ID, Item Name, Price, Status.\n- All visible orders across the scraped pages are included in the export.\n\n## Notes\n- If an order contains multiple items, each item is exported as a separate row with the same Order ID.\n- Digital orders and physical orders are both included.\n- Cancelled orders may appear with a \"Cancelled\" status in the export.",
   "steps": [],
   "startUrl": "https://www.amazon.com/gp/css/order-history",
   "score": 0.5,

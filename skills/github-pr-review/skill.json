@@ -1,32 +1,37 @@
 {
   "id": "github-pr-review",
   "name": "GitHub PR Review Helper",
-  "description": "Automatically summarize PR changes and leave structured review comments on GitHub pull requests",
+  "description": "Summarizes pull request changes and posts a structured review comment on GitHub. Use this when the user wants an automated code review covering file-level diffs, potential issues, and improvement suggestions for a specific PR.",
   "version": 3,
-  "categories": ["Developer Tools", "GitHub"],
+  "categories": ["developer-tools", "github"],
   "parameters": [
     {
-      "name": "style",
+      "name": "review_style",
       "type": "select",
-      "description": "Review style",
+      "description": "Level of detail in the review comment — concise gives a brief summary, detailed includes line-by-line analysis",
       "required": false,
       "default": "concise",
       "options": ["concise", "detailed"]
     }
   ],
-  "triggerPhrases": ["github", "pull request", "review", "PR", "code review"],
+  "triggerPhrases": ["review this PR", "summarize pull request", "code review github", "github PR审查", "审查这个PR"],
   "urlPattern": "github.com",
   "preconditions": [
     {
       "type": "url_contains",
-      "value": "github.com",
-      "description": "Must be on GitHub"
+      "value": "github.com/",
+      "description": "Browser must be on a GitHub pull request page"
+    },
+    {
+      "type": "url_contains",
+      "value": "/pull/",
+      "description": "URL must contain /pull/ indicating a pull request page"
     }
   ],
   "author": "ocbot-community",
   "createdAt": 1708819200000,
   "updatedAt": 1710115200000,
-  "skillMd": "---\nname: github-pr-review\ndescription: Automatically summarize PR changes and leave structured review comments on GitHub pull requests. Use when reviewing code on GitHub.\n---\n\n# GitHub PR Review Helper\n\nReads the diff of a GitHub pull request, summarizes the changes, and posts a structured review comment.\n\n## Features\n\n- Summarizes added/removed/modified files\n- Highlights potential issues\n- Posts review comment with suggestions\n\n## Parameters\n\n- **style** (select, optional, default: \"concise\"): Review style. Options: concise, detailed\n\n## Guidelines\n\n- Read the full diff before generating a summary\n- Group changes by file or module for clarity\n- Flag potential bugs, security issues, and style violations\n- Keep concise reviews under 200 words; detailed reviews can be longer\n- Use GitHub's suggestion syntax for concrete code changes",
+  "skillMd": "---\nname: github-pr-review\ndescription: Summarizes pull request changes and posts a structured review comment on GitHub. Use this when the user wants an automated code review covering file-level diffs, potential issues, and improvement suggestions for a specific PR.\ntriggerPhrases:\n  - review this PR\n  - summarize pull request\n  - code review github\n  - github PR审查\n  - 审查这个PR\nstartUrl: \"https://github.com\"\nurlPattern: \"github.com\"\ncategories:\n  - developer-tools\n  - github\nparameters:\n  - name: review_style\n    type: select\n    description: \"Level of detail in the review comment — concise gives a brief summary, detailed includes line-by-line analysis\"\n    required: false\n    default: \"concise\"\n    options: [\"concise\", \"detailed\"]\npreconditions:\n  - type: url_contains\n    value: \"github.com/\"\n    description: \"Browser must be on a GitHub pull request page\"\n  - type: url_contains\n    value: \"/pull/\"\n    description: \"URL must contain /pull/ indicating a pull request page\"\n---\n\n# GitHub PR Review Helper\n\n## Workflow\n1. Open the \"Files changed\" tab on the current pull request page.\n2. Read through each changed file, collecting: filename, change type (added/modified/deleted), lines added/removed, and notable code patterns.\n3. Identify potential issues: bugs, security concerns, style violations, missing error handling.\n4. Compose a structured review comment based on {{review_style}}.\n5. Click the \"Review changes\" button, paste the review into the comment box, select \"Comment\", and submit.\n\n## Preconditions\n- Browser must be on a GitHub pull request page (URL contains `/pull/`).\n- User must be logged into GitHub with write access to the repository (to post comments).\n\n## Success Criteria\n- A review comment is successfully posted on the PR with a structured summary.\n- The comment includes: overview of changes, list of files modified, and any flagged issues.\n\n## Notes\n- For \"concise\" style, the review is kept under 200 words focusing on key changes and critical issues.\n- For \"detailed\" style, each file gets its own section with line-level observations.\n- The skill does not approve or request changes — it only posts informational comments.",
   "steps": [],
   "startUrl": "https://github.com",
   "score": 0.5,

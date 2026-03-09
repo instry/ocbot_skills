@@ -1,37 +1,37 @@
 {
   "id": "linkedin-auto-connect",
   "name": "LinkedIn Smart Connect",
-  "description": "Auto-send personalized connection requests from LinkedIn search results with customizable message templates",
+  "description": "Sends personalized connection requests from LinkedIn people search results. Use this when the user wants to expand their professional network by bulk-sending customized connection messages based on a template, with daily rate limiting to avoid account restrictions.",
   "version": 1,
-  "categories": ["Social", "Automation"],
+  "categories": ["social", "automation"],
   "parameters": [
     {
-      "name": "message",
+      "name": "message_template",
       "type": "string",
-      "description": "Connection request message template",
+      "description": "Connection request message template — use {{name}} for the person's name and {{headline}} for their job title (e.g., 'Hi {{name}}, I noticed you work in {{headline}} and would love to connect!')",
       "required": true
     },
     {
-      "name": "dailyLimit",
+      "name": "daily_limit",
       "type": "number",
-      "description": "Maximum requests per day",
+      "description": "Maximum number of connection requests to send in this session to avoid LinkedIn rate limits",
       "required": false,
       "default": 20
     }
   ],
-  "triggerPhrases": ["linkedin", "connect", "connection", "request", "network"],
+  "triggerPhrases": ["linkedin批量加好友", "send linkedin connection requests", "linkedin自动连接", "bulk connect linkedin", "linkedin群发邀请"],
   "urlPattern": "linkedin.com",
   "preconditions": [
     {
       "type": "url_contains",
       "value": "linkedin.com",
-      "description": "Must be on LinkedIn"
+      "description": "Browser must be on LinkedIn domain with active login session"
     }
   ],
   "author": "networking-pro",
   "createdAt": 1709510400000,
   "updatedAt": 1709510400000,
-  "skillMd": "---\nname: linkedin-auto-connect\ndescription: Auto-send personalized connection requests from LinkedIn search results with customizable message templates. Use when the user wants to bulk-send LinkedIn connection requests.\n---\n\n# LinkedIn Smart Connect\n\nAutomatically sends personalized connection requests from LinkedIn people search results.\n\n## Features\n\n- Iterates through search results\n- Generates personalized messages from a template\n- Supports daily send limit\n\n## Parameters\n\n- **message** (string, required): Connection request message template\n- **dailyLimit** (number, optional, default: 20): Maximum requests per day\n\n## Guidelines\n\n- Always respect the daily send limit to avoid LinkedIn rate limits\n- Personalize each message using the target person's name and headline\n- Skip profiles that already have a pending or accepted connection\n- Pause between requests to avoid detection",
+  "skillMd": "---\nname: linkedin-auto-connect\ndescription: Sends personalized connection requests from LinkedIn people search results. Use this when the user wants to expand their professional network by bulk-sending customized connection messages based on a template, with daily rate limiting to avoid account restrictions.\ntriggerPhrases:\n  - linkedin批量加好友\n  - send linkedin connection requests\n  - linkedin自动连接\n  - bulk connect linkedin\n  - linkedin群发邀请\nstartUrl: \"https://www.linkedin.com/search/results/people/\"\nurlPattern: \"linkedin.com\"\ncategories:\n  - social\n  - automation\nparameters:\n  - name: message_template\n    type: string\n    description: \"Connection request message template — use {{name}} for the person's name and {{headline}} for their job title\"\n    required: true\n  - name: daily_limit\n    type: number\n    description: \"Maximum number of connection requests to send in this session to avoid LinkedIn rate limits\"\n    required: false\n    default: 20\npreconditions:\n  - type: url_contains\n    value: \"linkedin.com\"\n    description: \"Browser must be on LinkedIn domain with active login session\"\n---\n\n# LinkedIn Smart Connect\n\n## Workflow\n1. Navigate to https://www.linkedin.com/search/results/people/ (LinkedIn People Search).\n2. For each person in the search results (up to {{daily_limit}} people):\n   a. Extract their display name and headline text.\n   b. Click the \"Connect\" button next to their profile.\n   c. In the connection modal, click \"Add a note\".\n   d. Fill in the message field using {{message_template}}, replacing {{name}} with their name and {{headline}} with their headline.\n   e. Click \"Send\" to submit the request.\n   f. Wait 3-5 seconds before processing the next person.\n3. If more results exist and the daily limit is not reached, scroll down or click \"Next\" to load more profiles.\n\n## Preconditions\n- User must be logged into their LinkedIn account (active session).\n- Browser must be on the LinkedIn domain to ensure session cookies are available.\n- The search results page should already be filtered to the desired audience.\n\n## Success Criteria\n- Connection requests are sent to up to {{daily_limit}} people from the search results.\n- Each message is personalized with the recipient's name and headline.\n\n## Notes\n- Profiles that already show \"Pending\" or \"Message\" (already connected) are automatically skipped.\n- If LinkedIn shows a CAPTCHA or rate limit warning, the skill stops immediately to protect the account.\n- The 3-5 second delay between requests mimics human behavior to reduce detection risk.\n- Message template must be under 300 characters (LinkedIn's limit for connection notes).",
   "steps": [],
   "startUrl": "https://www.linkedin.com/search/results/people/",
   "score": 0.5,
